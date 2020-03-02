@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>海苔船港</title>
+  
+  <subtitle>参加比赛.认真准备.自己很菜.去喊口号.内心空洞.我是菜🐔.别吹了。</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://gaobaiibai.com/"/>
+  <updated>2020-03-02T13:17:34.306Z</updated>
+  <id>http://gaobaiibai.com/</id>
+  
+  <author>
+    <name>GaoBaiiBai</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test</title>
+    <link href="http://gaobaiibai.com/2020/03/02/test/"/>
+    <id>http://gaobaiibai.com/2020/03/02/test/</id>
+    <published>2020-03-02T12:35:18.000Z</published>
+    <updated>2020-03-02T13:17:34.306Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="GaoBaiiBai"><a href="#GaoBaiiBai" class="headerlink" title="GaoBaiiBai"></a>GaoBaiiBai</h1><h2 id="第一次测试"><a href="#第一次测试" class="headerlink" title="第一次测试"></a>第一次测试</h2><a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;GaoBaiiBai&quot;&gt;&lt;a href=&quot;#GaoBaiiBai&quot; class=&quot;headerlink&quot; title=&quot;GaoBaiiBai&quot;&gt;&lt;/a&gt;GaoBaiiBai&lt;/h1&gt;&lt;h2 id=&quot;第一次测试&quot;&gt;&lt;a href=&quot;#第一次测试&quot; class=&quot;headerlink&quot; title=&quot;第一次测试&quot;&gt;&lt;/a&gt;第一次测试&lt;/h2&gt;
+    
+    </summary>
+    
+    
+      <category term="测试分类" scheme="http://GaoBaiiBai.com/categories/%E6%B5%8B%E8%AF%95%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="测试1" scheme="http://GaoBaiiBai.com/tags/%E6%B5%8B%E8%AF%951/"/>
+    
+      <category term="测试2" scheme="http://GaoBaiiBai.com/tags/%E6%B5%8B%E8%AF%952/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://gaobaiibai.com/2020/03/02/hello-world/"/>
+    <id>http://gaobaiibai.com/2020/03/02/hello-world/</id>
+    <published>2020-03-02T07:46:01.060Z</published>
+    <updated>2020-03-02T13:19:04.716Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><a id="more"></a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
