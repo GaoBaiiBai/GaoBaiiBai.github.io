@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gaobaiibai.com/"/>
-  <updated>2020-03-13T09:14:19.183Z</updated>
+  <updated>2020-03-13T08:10:32.213Z</updated>
   <id>http://gaobaiibai.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git+GitHub+TortoiseGit间的操作使用</title>
+    <link href="http://gaobaiibai.com/2020/03/02/Github_Wugui/"/>
+    <id>http://gaobaiibai.com/2020/03/02/Github_Wugui/</id>
+    <published>2020-03-02T12:35:18.000Z</published>
+    <updated>2020-03-13T08:10:32.213Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://GaoBaiiBai.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Git" scheme="http://GaoBaiiBai.com/tags/Git/"/>
+    
+      <category term="工具" scheme="http://GaoBaiiBai.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="TortoiseGit" scheme="http://GaoBaiiBai.com/tags/TortoiseGit/"/>
+    
+  </entry>
   
   <entry>
     <title>用Python爬虫实现翻译功能</title>
@@ -40,29 +63,6 @@
       <category term="端口" scheme="http://GaoBaiiBai.com/tags/%E7%AB%AF%E5%8F%A3/"/>
     
       <category term="翻译" scheme="http://GaoBaiiBai.com/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git+GitHub+TortoiseGit间的操作使用</title>
-    <link href="http://gaobaiibai.com/2020/03/02/Github_Wugui/"/>
-    <id>http://gaobaiibai.com/2020/03/02/Github_Wugui/</id>
-    <published>2020-03-02T12:35:18.000Z</published>
-    <updated>2020-03-13T08:10:32.213Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="工具" scheme="http://GaoBaiiBai.com/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Git" scheme="http://GaoBaiiBai.com/tags/Git/"/>
-    
-      <category term="工具" scheme="http://GaoBaiiBai.com/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="TortoiseGit" scheme="http://GaoBaiiBai.com/tags/TortoiseGit/"/>
     
   </entry>
   
