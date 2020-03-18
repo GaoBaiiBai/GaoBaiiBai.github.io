@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gaobaiibai.com/"/>
-  <updated>2020-03-13T09:14:19.183Z</updated>
+  <updated>2020-03-18T15:17:14.022Z</updated>
   <id>http://gaobaiibai.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git+GitHub+TortoiseGit间的操作使用</title>
+    <link href="http://gaobaiibai.com/2020/03/02/Github_Wugui/"/>
+    <id>http://gaobaiibai.com/2020/03/02/Github_Wugui/</id>
+    <published>2020-03-02T12:35:18.000Z</published>
+    <updated>2020-03-18T15:17:14.022Z</updated>
+    
+    <content type="html"><![CDATA[<p>近几次发现很多人在使用Git的过程中是通过使用Git的命令进行文件的上传与下载的，所以，就想在这里推荐一款集成了Git命令的图形化软件，从而省下敲命令与思考的时间更加的人性化。个人认为重复的过程是不需要一直重复进行操作的，利用节省下来的时间做更多的事情不是更好吗？下面是我共享出来的安装链接：<a href="https://pan.baidu.com/s/1ek8Uc64-hMU74WkAJ7SI4Q" target="_blank" rel="noopener">https://pan.baidu.com/s/1ek8Uc64-hMU74WkAJ7SI4Q</a> 提取码：6omn</p><a id="more"></a><h3 id="Git与SVN的区别"><a href="#Git与SVN的区别" class="headerlink" title="Git与SVN的区别"></a>Git与SVN的区别</h3><p>SVN是集中式版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器哪里得到最新的版本，然后干活，干完后，需要把自己做完的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网还可以，带宽够大，速度够快，如果在互联网下，如果网速慢的话，就郁闷了。而SVN的缺点也是很明显的，如果服务器单点故障那么就太恼火了瞬间就感觉要GG了，所以容错性差。<br>Git是分布式版本控制系统，那么它就没有中央服务器的，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己的电脑上。既然每个人的电脑都有一个完整的版本库，那多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。下图是Git的工作流程<br><img src="/2020/03/02/Github_Wugui/%E5%9B%BE%E7%89%871.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;近几次发现很多人在使用Git的过程中是通过使用Git的命令进行文件的上传与下载的，所以，就想在这里推荐一款集成了Git命令的图形化软件，从而省下敲命令与思考的时间更加的人性化。个人认为重复的过程是不需要一直重复进行操作的，利用节省下来的时间做更多的事情不是更好吗？下面是我共享出来的安装链接：&lt;a href=&quot;https://pan.baidu.com/s/1ek8Uc64-hMU74WkAJ7SI4Q&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://pan.baidu.com/s/1ek8Uc64-hMU74WkAJ7SI4Q&lt;/a&gt; 提取码：6omn&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://GaoBaiiBai.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Git" scheme="http://GaoBaiiBai.com/tags/Git/"/>
+    
+      <category term="工具" scheme="http://GaoBaiiBai.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="TortoiseGit" scheme="http://GaoBaiiBai.com/tags/TortoiseGit/"/>
+    
+  </entry>
   
   <entry>
     <title>用Python爬虫实现翻译功能</title>
@@ -40,29 +67,6 @@
       <category term="端口" scheme="http://GaoBaiiBai.com/tags/%E7%AB%AF%E5%8F%A3/"/>
     
       <category term="翻译" scheme="http://GaoBaiiBai.com/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git+GitHub+TortoiseGit间的操作使用</title>
-    <link href="http://gaobaiibai.com/2020/03/02/Github_Wugui/"/>
-    <id>http://gaobaiibai.com/2020/03/02/Github_Wugui/</id>
-    <published>2020-03-02T12:35:18.000Z</published>
-    <updated>2020-03-13T08:10:32.213Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="工具" scheme="http://GaoBaiiBai.com/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Git" scheme="http://GaoBaiiBai.com/tags/Git/"/>
-    
-      <category term="工具" scheme="http://GaoBaiiBai.com/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="TortoiseGit" scheme="http://GaoBaiiBai.com/tags/TortoiseGit/"/>
     
   </entry>
   
