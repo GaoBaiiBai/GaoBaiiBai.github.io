@@ -31,8 +31,11 @@
 <meta property="og:description" content="近几次发现很多人在使用Git的过程中是通过使用Git的命令进行文件的上传与下载的，所以，就想在这里推荐一款集成了Git命令的图形化软件，从而省下敲命令与思考的时间更加的人性化。个人认为重复的过程是不需要一直重复进行操作的，利用节省下来的时间做更多的事情不是更好吗？下面是我共享出来的安装链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1ek8Uc64-hMU74WkAJ7SI4Q 提取码：6o">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://gaobaiibai.com/2020/03/02/Github_Wugui/%E5%9B%BE%E7%89%871.png">
+<meta property="og:image" content="http://gaobaiibai.com/2020/03/02/Github_Wugui/%E5%9B%BE%E7%89%872.png">
+<meta property="og:image" content="http://gaobaiibai.com/2020/03/02/Github_Wugui/%E5%9B%BE%E7%89%873.png">
+<meta property="og:image" content="http://gaobaiibai.com/2020/03/02/Github_Wugui/%E5%9B%BE%E7%89%874.png">
 <meta property="article:published_time" content="2020-03-02T12:35:18.000Z">
-<meta property="article:modified_time" content="2020-03-18T15:17:14.022Z">
+<meta property="article:modified_time" content="2020-03-18T15:34:56.612Z">
 <meta property="article:author" content="GaoBaiiBai">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="工具">
@@ -232,7 +235,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-18 23:17:14" itemprop="dateModified" datetime="2020-03-18T23:17:14+08:00">2020-03-18</time>
+                <time title="修改时间：2020-03-18 23:34:56" itemprop="dateModified" datetime="2020-03-18T23:34:56+08:00">2020-03-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -285,7 +288,26 @@
       
         <p>近几次发现很多人在使用Git的过程中是通过使用Git的命令进行文件的上传与下载的，所以，就想在这里推荐一款集成了Git命令的图形化软件，从而省下敲命令与思考的时间更加的人性化。个人认为重复的过程是不需要一直重复进行操作的，利用节省下来的时间做更多的事情不是更好吗？下面是我共享出来的安装链接：<a href="https://pan.baidu.com/s/1ek8Uc64-hMU74WkAJ7SI4Q" target="_blank" rel="noopener">https://pan.baidu.com/s/1ek8Uc64-hMU74WkAJ7SI4Q</a> 提取码：6omn</p>
 <a id="more"></a>
-<h3 id="Git与SVN的区别"><a href="#Git与SVN的区别" class="headerlink" title="Git与SVN的区别"></a>Git与SVN的区别</h3><p>SVN是集中式版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器哪里得到最新的版本，然后干活，干完后，需要把自己做完的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网还可以，带宽够大，速度够快，如果在互联网下，如果网速慢的话，就郁闷了。而SVN的缺点也是很明显的，如果服务器单点故障那么就太恼火了瞬间就感觉要GG了，所以容错性差。<br>Git是分布式版本控制系统，那么它就没有中央服务器的，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己的电脑上。既然每个人的电脑都有一个完整的版本库，那多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。下图是Git的工作流程<br><img src="/2020/03/02/Github_Wugui/%E5%9B%BE%E7%89%871.png" alt></p>
+<h3 id="Git与SVN的区别"><a href="#Git与SVN的区别" class="headerlink" title="Git与SVN的区别"></a>Git与SVN的区别</h3><ul>
+<li><ol>
+<li><strong>SVN</strong></li>
+</ol>
+</li>
+<li><strong>SVN</strong>是集中式版本控制系统，版本库是集中放在中央服务器的，而干活的时候，用的都是自己的电脑，所以首先要从中央服务器哪里得到最新的版本，然后干活，干完后，需要把自己做完的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，如果在局域网还可以，带宽够大，速度够快，如果在互联网下，如果网速慢的话，就郁闷了。而SVN的缺点也是很明显的，如果服务器单点故障那么就太恼火了瞬间就感觉要GG了，所以容错性差。</li>
+<li><ol start="2">
+<li><strong>Git</strong></li>
+</ol>
+</li>
+<li><strong>Git</strong>是分布式版本控制系统，那么它就没有中央服务器的，每个人的电脑就是一个完整的版本库，这样，工作的时候就不需要联网了，因为版本都是在自己的电脑上。既然每个人的电脑都有一个完整的版本库，那多个人如何协作呢？比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。下图是Git的工作流程<br><img src="/2020/03/02/Github_Wugui/%E5%9B%BE%E7%89%871.png" alt><h3 id="TortoiseGit的使用"><a href="#TortoiseGit的使用" class="headerlink" title="TortoiseGit的使用"></a>TortoiseGit的使用</h3></li>
+<li><ol>
+<li>TortoiseGit的安装<br>本篇文章不重点讲TortoiseGit的安装了，在上面已经分享过了安装包，直接进行傻瓜式安装就可以了，但是在那之前一定要下载Git，如果出现什么问题的话可以直接进行百度，TortoiseGit是非常优秀的开源的版本库客户端，如果熟练使用的话可以节约很多的时间。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>创建版本库<br>在Git中我们可以直接在当前目录下运行Git Bash Here使用git init进行创建，而在TortoiseGit中也是非常的好用，首先我们现在目录下创一个文件test。<br><img src="/2020/03/02/Github_Wugui/%E5%9B%BE%E7%89%872.png" alt><br>然后进入文件夹，在空列表中点击右键Git在这里创建版本库，然后就会出现.git文件<br><img src="/2020/03/02/Github_Wugui/%E5%9B%BE%E7%89%873.png" alt><br><img src="/2020/03/02/Github_Wugui/%E5%9B%BE%E7%89%874.png" alt></li>
+</ol>
+</li>
+</ul>
 
     </div>
 
@@ -410,7 +432,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git与SVN的区别"><span class="nav-number">1.</span> <span class="nav-text">Git与SVN的区别</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git与SVN的区别"><span class="nav-number">1.</span> <span class="nav-text">Git与SVN的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TortoiseGit的使用"><span class="nav-number">2.</span> <span class="nav-text">TortoiseGit的使用</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
