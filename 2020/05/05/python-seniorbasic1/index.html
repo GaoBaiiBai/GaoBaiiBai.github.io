@@ -293,6 +293,13 @@
 <p>在Python中所有实例化的最高级别是type，所有属性的最高基类都是object。我们看以下的代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">print(type(list))</span><br><span class="line">print(list.__bases__)</span><br><span class="line">print(type(type))</span><br><span class="line">print(type(object))</span><br><span class="line">print(type.__bases__)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">st = Student()</span><br><span class="line">print(type(st.__class__))</span><br><span class="line">print(isinstance(st,object))</span><br></pre></td></tr></table></figure>
 <p>其中list的基类是object，st的基类是Student,Student的基类就是object，所以isinstance(st,object)的结果True。同时type的实例化对象是object，object的实例化对象是type，type的基类是objct。如果你仔细的理解一下上面的图就很容易明白这个关系。</p>
+<ul>
+<li><ol start="3">
+<li>Python中的内置类型<br>首先我们来说下对象的三个特征，身份、类型、值。同时None的值是只有一个的。可以在Python中输入以下的代码，它的id值，也就是地址永远是一致<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="literal">None</span></span><br><span class="line">print(type(a))</span><br><span class="line">print(id(<span class="literal">None</span>))</span><br><span class="line">print(id(<span class="literal">None</span>))</span><br></pre></td></tr></table></figure>
+身份是a，类型是NoneType，值是None，所以对象的三个特征就是身份、类型、值。数值的类型分别有：int，float，complex（复数），bool。序列类型：list，bytes、bytearray、memoryview（二进制序列），range，tuple，str，array。上下文</li>
+</ol>
+</li>
+</ul>
 
     </div>
 
