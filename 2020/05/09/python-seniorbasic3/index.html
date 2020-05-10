@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/juxie2.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/juxie1.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-circle.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gaobaiibai.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="好久没有更新个人的博客了，经过这几天的学习，对于Python的基础又有了新的认知，所以将要从以下几个方面来介绍-对象引用、可变性和垃圾回收-元类编程-迭代器和生成器这几个方面来介绍。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python高级编程基础（三）">
+<meta property="og:url" content="http://gaobaiibai.com/2020/05/09/python-seniorbasic3/index.html">
+<meta property="og:site_name" content="海苔船港">
+<meta property="og:description" content="好久没有更新个人的博客了，经过这几天的学习，对于Python的基础又有了新的认知，所以将要从以下几个方面来介绍-对象引用、可变性和垃圾回收-元类编程-迭代器和生成器这几个方面来介绍。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-09T15:58:38.000Z">
+<meta property="article:modified_time" content="2020-05-09T15:58:38.000Z">
+<meta property="article:author" content="GaoBaiiBai">
+<meta property="article:tag" content="Python - 高级编程 - 基础">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://gaobaiibai.com/2020/05/09/python-seniorbasic3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Python高级编程基础（三） | 海苔船港</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="海苔船港" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	<a href="https://github.com/GaoBaiiBai" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">海苔船港</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">参加比赛.认真准备.自己很菜.去喊口号.内心空洞.我是菜🐔.别吹了。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://gaobaiibai.com/2020/05/09/python-seniorbasic3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/GaobaiiBai.JPG">
+      <meta itemprop="name" content="GaoBaiiBai">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海苔船港">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python高级编程基础（三）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-09 23:58:38" itemprop="dateCreated datePublished" datetime="2020-05-09T23:58:38+08:00">2020-05-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">python基础</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/05/09/python-seniorbasic3/" class="post-meta-item leancloud_visitors" data-flag-title="Python高级编程基础（三）" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/05/09/python-seniorbasic3/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/09/python-seniorbasic3/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>好久没有更新个人的博客了，经过这几天的学习，对于Python的基础又有了新的认知，所以将要从以下几个方面来介绍-对象引用、可变性和垃圾回收-元类编程-迭代器和生成器这几个方面来介绍。</p>
+<a id="more"></a>
+
+<p><strong>1. 可变性和垃圾回收</strong><br><strong>对象引用</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Python和Java中的变量本质不一样,Python的变量实质上一个指针</span></span><br><span class="line"><span class="comment"># 先生成对象再把指针指向值</span></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">1</span></span><br><span class="line">print(a==b)</span><br><span class="line">print(id(a),id(b))</span><br><span class="line">print(a <span class="keyword">is</span> b)</span><br></pre></td></tr></table></figure>
+
+<p><strong>垃圾回收</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Python中垃圾回收的算法是采用：引用计算</span></span><br><span class="line">a = <span class="number">1</span></span><br><span class="line">b =a</span><br><span class="line"><span class="comment"># 再del的过程中是减少对象上的计数，当数据降为1的时候就直接回收掉了</span></span><br><span class="line"><span class="keyword">del</span> a</span><br><span class="line">a = object()</span><br><span class="line">b = a</span><br><span class="line"><span class="keyword">del</span> a</span><br><span class="line"><span class="comment"># 删除了a因为最先计数，b还是可以打印的</span></span><br><span class="line">print(b)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Python中的一个经典错误</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    a += b</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Company</span>:</span></span><br><span class="line">    <span class="comment"># 尽力不要传递list与dict是会被改变的</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, staffs=[])</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.staffs = staffs</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, staff_name)</span>:</span></span><br><span class="line">        self.staffs.append(staff_name)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self, staff_name)</span>:</span></span><br><span class="line">        self.staffs.remove(staff_name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># 因为列表赋值为空，同时并没有传入列表，所以公用了一个staffs，</span></span><br><span class="line">    <span class="comment"># 因此后面的值会重复前面的值，造成了冲突</span></span><br><span class="line">    com1 = Company(<span class="string">"com1"</span>, [<span class="string">"bobby1"</span>, <span class="string">"bobby2"</span>])</span><br><span class="line">    com1.add(<span class="string">"bobby3"</span>)</span><br><span class="line">    com1.remove(<span class="string">"bobby1"</span>)</span><br><span class="line">    <span class="keyword">print</span> (com1.staffs)</span><br><span class="line"></span><br><span class="line">    com2 = Company(<span class="string">"com2"</span>)</span><br><span class="line">    com2.add(<span class="string">"bobby"</span>)</span><br><span class="line">    print(com2.staffs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> (Company.__init__.__defaults__)</span><br><span class="line"></span><br><span class="line">    com3 = Company(<span class="string">"com3"</span>)</span><br><span class="line">    com3.add(<span class="string">"bobby5"</span>)</span><br><span class="line">    <span class="keyword">print</span> (com2.staffs)</span><br><span class="line">    <span class="keyword">print</span> (com3.staffs)</span><br><span class="line">    <span class="keyword">print</span> (com2.staffs <span class="keyword">is</span> com3.staffs)</span><br><span class="line">    print(id(com2))</span><br><span class="line">    print(id(com3))</span><br></pre></td></tr></table></figure>
+<p>在Python中如果原先顶的是列表可变变量的话，多次调用会使得系统默认是同一个对象，就会在原来的基础上进行操作，所以为了解决这个问题，我们在操作的时候要传入不可变的变量以解决问题。</p>
+<p><strong>2. 元类编程</strong><br><strong>property动态属性</strong>:当我们需要动态的修改某一个属性值的时候我们可以使用@property方法，定义类方法的名称来调用函数的值，同时可以通过定义的方法来设置值例如：@age.setter，这时候我们只要调用_age这个私有属性就可以获取值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span>  datetime <span class="keyword">import</span> date,datetime</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,name,birthday)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.birthady = birthday</span><br><span class="line">        self._age=<span class="number">0</span></span><br><span class="line">    <span class="comment"># def get_age(self):</span></span><br><span class="line">    <span class="comment">#     return datetime.now().year -self.birthady.year</span></span><br><span class="line">    <span class="comment"># 属性描述值，直接可以使用age的值了</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> datetime.now().year - self.birthady.year</span><br><span class="line"><span class="meta">    @age.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span><span class="params">(self,value)</span>:</span></span><br><span class="line">        self._age =value</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    user = User(<span class="string">"GYQ"</span>,date(year=<span class="number">1999</span>,month=<span class="number">7</span>,day=<span class="number">21</span>))</span><br><span class="line">    user.age=<span class="number">30</span></span><br><span class="line">    print(user._age)</span><br><span class="line">    print(user.age)</span><br></pre></td></tr></table></figure>
+
+<p><strong><strong>getattr</strong>和<strong>getattribute</strong>的区别</strong>:<strong>getattr</strong>就是在查找不到的时候调用，当找不到类属性值的时候会进入这里面查找，而<strong>getattribute</strong>则是不管存不存在都会进去查找属性值，如下列代码，返回的company_name值就为gYQ。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span>  datetime <span class="keyword">import</span> date,datetime</span><br><span class="line"><span class="comment">#__getattr__就是在查找不到的时候调用</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,name,birthday,info=&#123;&#125;)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.birthady = birthday</span><br><span class="line">        self.info = info</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.info[item]</span><br><span class="line">        <span class="comment"># return "not find attr"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 无条件的进入,能不重写就不重写</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattribute__</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"gYQ"</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    user = User(<span class="string">"GYQ"</span>, date(year=<span class="number">1999</span>, month=<span class="number">7</span>, day=<span class="number">21</span>),info=&#123;<span class="string">"company_name"</span>:<span class="string">"imooc"</span>&#125;)</span><br><span class="line">    <span class="comment"># print(user.age)</span></span><br><span class="line">    print(user.company_name)</span><br></pre></td></tr></table></figure>
+
+<p><strong>属性描述符</strong>:我们可以定义一个属性去通过<strong>set</strong>和<strong>get</strong>的方法，判断这个属性是否是某个属性的子类，当我们强性质需要输入的是某个类型的时候，我们就可以进行判断，如果不是我们就可以抛出异常。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span>  datetime <span class="keyword">import</span> date,datetime</span><br><span class="line"><span class="keyword">import</span> numbers</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">把至少实现了内置属性__set__()和__get__()方法的描述符称为数据描述符；</span></span><br><span class="line"><span class="string">把实现了除__set__()以外的方法的描述符称为非数据描述符。</span></span><br><span class="line"><span class="string">类属性 &gt; 数据描述符 &gt; 实例属性 &gt; 非数据描述符 &gt; 找不到的属性触发__getattr__()</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IntField</span>:</span></span><br><span class="line">    <span class="comment"># 数据描述符</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, instance, owner)</span>:</span></span><br><span class="line">        <span class="keyword">return</span>  self.value</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__set__</span><span class="params">(self, instance, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isinstance(value,numbers.Integral):</span><br><span class="line">            <span class="keyword">raise</span>  ValueError(<span class="string">"int value need"</span>)</span><br><span class="line">        <span class="keyword">if</span> value&lt;<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">"value must &gt;0"</span>)</span><br><span class="line">        self.value = value</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__delete__</span><span class="params">(self, instance)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NoDataIntField</span>:</span></span><br><span class="line"><span class="comment">#     非数据描述符</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__get__</span><span class="params">(self, instance, owner)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.value</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span>:</span></span><br><span class="line">    age = IntField()</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    user = User()</span><br><span class="line">    user.age = <span class="number">1</span></span><br><span class="line">    print(user.age)</span><br></pre></td></tr></table></figure>
+
+<p><strong><strong>new</strong>和<strong>init</strong>的区别</strong>:new 是用来控制对象的生成过程，在对象生成之前init 是用来完善对象的，添加属性，如果new方法不返回对象，则不会调用init函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span>:</span></span><br><span class="line">    <span class="comment"># __new__可以自定义类的生成过程的的 传递的是cls是个类</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls, *args, **kwargs)</span>:</span></span><br><span class="line">        print(<span class="string">"in new"</span>)</span><br><span class="line">        <span class="keyword">return</span> super().__new__(cls)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># __init__传递的是一个对象</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        print(<span class="string">"in init"</span>)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    user =User(name =<span class="string">"bobby"</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 迭代器和生成器</strong><br><strong>Python中的迭代协议</strong>:什么是迭代器？：迭代器是访问集合内的一种方式，一遍用来遍历数据，迭代器和以下标的访问方式不一样，迭代器是不能返回的，迭代器提供了一种惰性访问的方式，同时迭代器是实现了<strong>iter</strong>方法和<strong>next</strong>方法。</p>
+<p><strong>什么是迭代器和可迭代对象</strong>：<br>可迭代对象是实现了<strong>iter</strong>()方法的对象，而迭代器（Iterator）则是实现了<strong>iter</strong>()和<strong>next</strong>()方法的对象，可以显示地获取下一个元素。这种可以被next调用并不断返回下一个值的对象称为迭代器。<br>迭代器一定是可迭代对象，反过来则不一定成立。用iter()函数可以把list、dict、str等Iterable变成Iterator<br><strong>Python中的生成器函数的使用</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成器函数:函数里只要有yield关键字</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen_fun</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="number">3</span></span><br><span class="line"><span class="comment"># 惰性求值，延迟求值提高了也能，内部不会消耗内存</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen_fib</span><span class="params">(index)</span>:</span></span><br><span class="line">    n,a,b=<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> n&lt;index:</span><br><span class="line">        <span class="keyword">if</span> n ==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">yield</span> a</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">yield</span> b</span><br><span class="line">            a,b =b,a+b</span><br><span class="line">        n+=<span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen_fun1</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="number">6</span></span><br><span class="line">    <span class="comment"># return会直接停止当生成器函数中含有return时，return不会返回任何值，会直接终止当前生成器，</span></span><br><span class="line">    <span class="comment"># 对yield的作用没有影响，当函数执行到return时候，</span></span><br><span class="line">    <span class="comment"># 调用next()来执行生成器则会报错，如果使用for循环遍历，for循环会自动捕获该异常，直接停止遍历</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"imooc"</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="number">7</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 返回的是一个生成器对象,在Python字节码的时候就产生了</span></span><br><span class="line">    gen = gen_fun()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> gen:</span><br><span class="line">        print(i)</span><br><span class="line">    print(<span class="string">'---------'</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> gen_fib(<span class="number">5</span>):</span><br><span class="line">        print(i)</span><br><span class="line">    print(<span class="string">'------'</span>)</span><br><span class="line">    a = gen_fun1()</span><br><span class="line">    print(a)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">        print(i)</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用生成器读取大文件</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#500G, 特殊 一行</span></span><br><span class="line"><span class="comment"># 使用的是f.read方法，读的是4096个字节</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myreadlines</span><span class="params">(f, newline)</span>:</span></span><br><span class="line">  buf = <span class="string">""</span></span><br><span class="line">  <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">while</span> newline <span class="keyword">in</span> buf:</span><br><span class="line">      pos = buf.index(newline)</span><br><span class="line">      <span class="keyword">yield</span> buf[:pos]</span><br><span class="line">      buf = buf[pos + len(newline):]</span><br><span class="line">    chunk = f.read(<span class="number">4096</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> chunk:</span><br><span class="line">      <span class="comment">#说明已经读到了文件结尾</span></span><br><span class="line">      <span class="keyword">yield</span> buf</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    buf += chunk</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./input.txt"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> myreadlines(f, <span class="string">"&#123;|&#125;"</span>):</span><br><span class="line">        <span class="keyword">print</span> (line)</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>本文对您有所帮助~可以在下方进行打赏~非常感谢您的支持~</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/Wechatpay.JPG" alt="GaoBaiiBai 微信支付">
+        <p>微信支付</p>
+      </div>
+      <div style="display: inline-block;">
+        <img src="/images/zhifubao.JPG" alt="GaoBaiiBai 支付宝支付">
+        <p>支付宝支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>GaoBaiiBai
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://gaobaiibai.com/2020/05/09/python-seniorbasic3/" title="Python高级编程基础（三）">http://gaobaiibai.com/2020/05/09/python-seniorbasic3/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Python-%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-%E5%9F%BA%E7%A1%80/" rel="tag"><i class="fa fa-google"></i>Python - 高级编程 - 基础</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/09/python-seniorbasic2/" rel="prev" title="Python高级编程基础（二）">
+      <i class="fa fa-chevron-left"></i> Python高级编程基础（二）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/10/python-seniorbasic4/" rel="next" title="Python高级编程基础（四）">
+      Python高级编程基础（四） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+	<div>
+    
+        
+    
+</div>
+  </article>
+  
+  
+  
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="GaoBaiiBai"
+      src="/images/GaobaiiBai.JPG">
+  <p class="site-author-name" itemprop="name">GaoBaiiBai</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/GaoBaiiBai" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;GaoBaiiBai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/5687187016" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;5687187016" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/wechat.JPG" title="Weixin → &#x2F;images&#x2F;wechat.JPG"><i class="fa fa-fw fa-weixin"></i>Weixin</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/images/qq.JPG" title="QQ → &#x2F;images&#x2F;qq.JPG"><i class="fa fa-fw fa-qq"></i>QQ</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://space.bilibili.com/481194362" title="https:&#x2F;&#x2F;space.bilibili.com&#x2F;481194362" rel="noopener" target="_blank">Bilibili链接</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+	  
+	  
+           <div>
+              <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="210" height="110" src="//music.163.com/outchain/player?type=2&id=27804836&auto=1&height=66"></iframe>
+           </div>
+    
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GaoBaiiBai</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>-->
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e5d424b017f6197" async="async"></script>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/three/three.min.js"></script>
+    <script defer src="/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'v2hcg1opPuw5KsXvzKECuyfK-9Nh9j0Va',
+      appKey     : 'vmwvN1sJFynuev5i7pEBgTaz',
+      placeholder: "输入你的评论",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

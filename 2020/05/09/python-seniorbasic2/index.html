@@ -23,38 +23,20 @@
     var CONFIG = {"hostname":"gaobaiibai.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="这里给大家推荐一个非常好用的谷歌爬虫得插件叫做WebScraper，这是一款可以用于爬取规则网站的工具，本篇文章将会对WebScraper的安装与操作等多个方面对其进行介绍。你可以不需要知道爬虫的知识点，爬虫的代码撰写，就可以爬取较为规则的网站。">
+  <meta name="description" content="好久没有更新个人的博客了，经过这几天的学习，对于Python的基础又有了新的认知，所以将要从以下几个方面来介绍-自定义序列类-深入python的set和dict这几个方面来介绍。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WebScraper">
-<meta property="og:url" content="http://gaobaiibai.com/2020/03/23/WebScraper/index.html">
+<meta property="og:title" content="Python高级编程基础（二）">
+<meta property="og:url" content="http://gaobaiibai.com/2020/05/09/python-seniorbasic2/index.html">
 <meta property="og:site_name" content="海苔船港">
-<meta property="og:description" content="这里给大家推荐一个非常好用的谷歌爬虫得插件叫做WebScraper，这是一款可以用于爬取规则网站的工具，本篇文章将会对WebScraper的安装与操作等多个方面对其进行介绍。你可以不需要知道爬虫的知识点，爬虫的代码撰写，就可以爬取较为规则的网站。">
+<meta property="og:description" content="好久没有更新个人的博客了，经过这几天的学习，对于Python的基础又有了新的认知，所以将要从以下几个方面来介绍-自定义序列类-深入python的set和dict这几个方面来介绍。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%871.png">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%872.png">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%873.png">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%874.png">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%875.png">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%876.png">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%877.png">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%878.png">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%879.png">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%8710.png">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%8711.png">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%8712.png">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%8713.png">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%8714.png">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%8715.png">
-<meta property="og:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%8716.png">
-<meta property="article:published_time" content="2020-03-23T06:10:54.000Z">
-<meta property="article:modified_time" content="2020-03-23T06:10:54.000Z">
+<meta property="article:published_time" content="2020-05-09T14:23:51.000Z">
+<meta property="article:modified_time" content="2020-05-09T14:23:51.000Z">
 <meta property="article:author" content="GaoBaiiBai">
-<meta property="article:tag" content="爬虫">
-<meta property="article:tag" content="工具">
+<meta property="article:tag" content="Python - 高级编程 - 基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://gaobaiibai.com/2020/03/23/WebScraper/%E5%9B%BE%E7%89%871.png">
 
-<link rel="canonical" href="http://gaobaiibai.com/2020/03/23/WebScraper/">
+<link rel="canonical" href="http://gaobaiibai.com/2020/05/09/python-seniorbasic2/">
 
 
 <script id="page-configurations">
@@ -66,7 +48,7 @@
   };
 </script>
 
-  <title>WebScraper | 海苔船港</title>
+  <title>Python高级编程基础（二） | 海苔船港</title>
   
 
 
@@ -216,7 +198,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://gaobaiibai.com/2020/03/23/WebScraper/">
+    <link itemprop="mainEntityOfPage" href="http://gaobaiibai.com/2020/05/09/python-seniorbasic2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/GaobaiiBai.JPG">
@@ -229,7 +211,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          WebScraper
+          Python高级编程基础（二）
         </h1>
 
         <div class="post-meta">
@@ -239,7 +221,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-03-23 14:10:54" itemprop="dateCreated datePublished" datetime="2020-03-23T14:10:54+08:00">2020-03-23</time>
+              <time title="创建时间：2020-05-09 22:23:51" itemprop="dateCreated datePublished" datetime="2020-05-09T22:23:51+08:00">2020-05-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -247,12 +229,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%88%AC%E8%99%AB/" itemprop="url" rel="index"><span itemprop="name">爬虫</span></a>
+                  <a href="/categories/python%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">python基础</span></a>
                 </span>
             </span>
 
           
-            <span id="/2020/03/23/WebScraper/" class="post-meta-item leancloud_visitors" data-flag-title="WebScraper" title="阅读次数">
+            <span id="/2020/05/09/python-seniorbasic2/" class="post-meta-item leancloud_visitors" data-flag-title="Python高级编程基础（二）" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -274,8 +256,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/03/23/WebScraper/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/03/23/WebScraper/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/05/09/python-seniorbasic2/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/09/python-seniorbasic2/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -290,32 +272,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>这里给大家推荐一个非常好用的谷歌爬虫得插件叫做WebScraper，这是一款可以用于爬取规则网站的工具，本篇文章将会对WebScraper的安装与操作等多个方面对其进行介绍。你可以不需要知道爬虫的知识点，爬虫的代码撰写，就可以爬取较为规则的网站。</p>
+        <p>好久没有更新个人的博客了，经过这几天的学习，对于Python的基础又有了新的认知，所以将要从以下几个方面来介绍-自定义序列类-深入python的set和dict这几个方面来介绍。</p>
 <a id="more"></a>
-<h3 id="一、安装说明"><a href="#一、安装说明" class="headerlink" title="一、安装说明"></a>一、安装说明</h3><p>首先我们需要安装Chrome浏览器，打开谷歌的应用去安装WebScraper，当然需要科学上网才可能完成。如果，确实没有科学上网的话，推荐大家安装一款名叫&lt;&lt;极速浏览器&gt;&gt;的浏览器，该款浏览器是具备了谷歌里的内核系统，同时可以下载谷歌里的插件。<br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%871.png" alt><br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%872.png" alt></p>
-<h3 id="二、演示实例"><a href="#二、演示实例" class="headerlink" title="二、演示实例"></a>二、演示实例</h3><ul>
-<li><ol>
-<li>网站选择与设置<br>本文用爬取缤客的酒店信息作为演示，百度搜索缤客的页面<a href="https://www.booking.com/" target="_blank" rel="noopener">https://www.booking.com/</a>目的地我们可以选择成都。对于kin缤客的网站我们是需要设置入住日期的，同时为了减小爬取的量我们选择离市中心5公里内的。<br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%873.png" alt></li>
-</ol>
-</li>
-<li><ol start="2">
-<li>WebScraper创建<br>按住F12，选择WebScraper中的Create Sitemap<br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%874.png" alt><br>创建Sitemap name和Start URL<br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%875.png" alt></li>
-</ol>
-</li>
-<li><ol start="3">
-<li>WebScraper属性创建<br>选择Add new selector，Type选择Element click，Id我们输入Info Element,Selector选择每一个属性实例图如下：（其中Type Element click的意思是选择每一个属性块，并且可以进行点击翻页；Element scroll down的意思是选择每一个属性快，并且可以进行下滑;Text为内容；Link为链接）<br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%876.png" alt><br>选择Click selector中的Select，选择页底的页面翻译，从而进行翻页<br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%877.png" alt><br>勾选Multiple，设置Delay (ms)为200<br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%878.png" alt><br>创建成功！</li>
-</ol>
-</li>
-<li><ol start="4">
-<li>WebScraper单个属性创建<br>选择酒店的名称<br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%879.png" alt><br>选择价格<br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%8710.png" alt><br>选择评分<br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%8711.png" alt></li>
-</ol>
-</li>
-<li><ol start="5">
-<li>WebScraper完成爬取<br>选择Sitemap binkeinfo中的scrape，开始爬取<br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%8712.png" alt><br>爬取开始<br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%8713.png" alt><br>数据获取完成<br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%8714.png" alt><br>选择Sitemap binkeinfo中的Export data as csv导出成为csv模式<br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%8715.png" alt><br>数据内容如下，完成爬取<br><img src="/2020/03/23/WebScraper/%E5%9B%BE%E7%89%8716.png" alt></li>
-</ol>
-</li>
-</ul>
-<h3 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h3><p>本文所讲内容有限，并不能全部细讲，只能讲述一个案例来说明WebScraper的功能，如果想更深入的学习Scraper工具可以搜索<a href="https://search.bilibili.com/all?keyword=web%20scraper" target="_blank" rel="noopener">https://search.bilibili.com/all?keyword=web%20scraper</a>内的内容进行深入的学习。转载请注明出处，禁止一切商业用途，目的：仅供学习。欢迎各位大佬指正错误，有问题请在下方留言，或者点击左边的微信/QQ加我进行联系。看到后会第一时间进行回复。</p>
+
+<p><strong>1. 自定义序列类</strong></p>
+<p><strong>Python中的序列分类</strong>：<br>容器序列：list、tuple、deque<br>扁平序列：str、bytes、bytearray、array.array<br>可变序列：list， deque，bytearray、array<br>不可变序列：str、tuple、bytes<br>容器序列和扁平序列的区别就是 容器序列可以放置任意类型的数据,扁平序列只能放置一致的数据类型<br>是的扁平序列的存储和读取速度也会更快，因为数据工整，所以如果是出于性能的考虑 能用扁平序列就用扁平序列</p>
+<p><strong>Python的list中+ += extend append</strong>：<br>+：并不会覆盖原来的数值的值，而是会产生一个新的值并赋值，a=[1,2]，b=[3,4]，a+b=[1,2,3,4],原本的a与b都不会发生改变<br>+=：会对+=的值进行覆盖，a=[1,2]，b=[3,4]，a+=b，那么a的值是[1,2,3,4]，b的值不会发生改变，没有返回值<br>extend：extend的内部调用的就是+=的方法，没有返回值<br>append：append是往列表中添加一个元素，并且改变原数据的值a=[1,2]，b=[3,4]，a.append(b),a=[1,2,[3,4]]</p>
+<p><strong>Python实现可切片的对象</strong>：<br>在Python中实现可切片的对象需要重构魔法函数的<strong>setitem</strong>方法例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numbers</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Group</span>:</span></span><br><span class="line"><span class="comment">#     支持切片操作</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,group_name,company_name,staffs)</span>:</span></span><br><span class="line">        self.group_name=group_name</span><br><span class="line">        self.company_name = company_name</span><br><span class="line">        self.staffs = staffs</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__reversed__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.staffs.reverse()</span><br><span class="line">    <span class="comment"># 可切片的关键</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        <span class="comment"># return self.staffs[item]</span></span><br><span class="line">        cls = type(self)</span><br><span class="line">        <span class="keyword">if</span> isinstance(item,slice):</span><br><span class="line">            <span class="keyword">return</span> cls(group_name=self.group_name,company_name=self.company_name,staffs=self.staffs[item])</span><br><span class="line">        <span class="keyword">elif</span> isinstance(item,numbers.Integral):</span><br><span class="line">            <span class="keyword">return</span> cls(group_name=self.group_name, company_name=self.company_name, staffs=[self.staffs[item]])</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span>  len(self.staffs)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> iter(self.staffs)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__contains__</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> item <span class="keyword">in</span> self.staffs:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">staffs=[<span class="string">"bobby1"</span>,<span class="string">"bobby2"</span>,<span class="string">"bobby3"</span>,<span class="string">"bobby4"</span>,<span class="string">"bobby5"</span>,<span class="string">"bobby6"</span>,<span class="string">"bobby7"</span>]</span><br><span class="line">group = Group(company_name=<span class="string">"immoc"</span>,group_name=<span class="string">"user"</span>,staffs=staffs)</span><br><span class="line">sub_group = group[::<span class="number">2</span>]</span><br><span class="line">print(sub_group)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Python使用bisect来维护序列和使用二分查找的包</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> bisect</span><br><span class="line"><span class="comment"># 用来处理已经排序好的序列，升序</span></span><br><span class="line"><span class="comment"># 二分查找</span></span><br><span class="line">inter_list=[]</span><br><span class="line">bisect.insort(inter_list,<span class="number">3</span>)</span><br><span class="line">bisect.insort(inter_list,<span class="number">2</span>)</span><br><span class="line">bisect.insort(inter_list,<span class="number">5</span>)</span><br><span class="line">bisect.insort(inter_list,<span class="number">6</span>)</span><br><span class="line">bisect.insort(inter_list,<span class="number">7</span>)</span><br><span class="line">print(inter_list)</span><br><span class="line">print(bisect.bisect(inter_list,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+
+<p><strong>Python中的闭包</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#闭包函数的实例</span></span><br><span class="line"><span class="comment"># outer是外部函数 a和b都是外函数的临时变量</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">( a )</span>:</span></span><br><span class="line">    b = <span class="number">10</span></span><br><span class="line">    <span class="comment"># inner是内函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="comment">#在内函数中 用到了外函数的临时变量</span></span><br><span class="line">        print(a+b)</span><br><span class="line">        <span class="comment"># 外函数的返回值是内函数的引用</span></span><br><span class="line">    <span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 在这里我们调用外函数传入参数5</span></span><br><span class="line">    <span class="comment">#此时外函数两个临时变量 a是5 b是10 ，并创建了内函数，然后把内函数的引用返回存给了demo</span></span><br><span class="line">    <span class="comment"># 外函数结束的时候发现内部函数将会用到自己的临时变量，这两个临时变量就不会释放，会绑定给这个内部函数</span></span><br><span class="line">    demo = outer(<span class="number">5</span>)</span><br><span class="line">    <span class="comment"># 我们调用内部函数，看一看内部函数是不是能使用外部函数的临时变量</span></span><br><span class="line">    <span class="comment"># demo存了外函数的返回值，也就是inner函数的引用，这里相当于执行inner函数</span></span><br><span class="line">    demo()</span><br><span class="line">    demo2 = outer(<span class="number">7</span>)</span><br><span class="line">    demo2()</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 深入python的set和dict</strong></p>
+<p><strong>dict中的继承</strong>：dict继承自abc模块的MutableMapping<br><strong>dict中的子类</strong>：UserDict和defaultdict</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mydict</span><span class="params">(dict)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setitem__</span><span class="params">(self, key, value)</span>:</span></span><br><span class="line">        super().__setitem__(key,value*<span class="number">2</span>)</span><br><span class="line">my_dict = Mydict(one=<span class="number">1</span>)</span><br><span class="line">my_dict[<span class="string">"one"</span>]=<span class="number">1</span></span><br><span class="line">print(my_dict)</span><br></pre></td></tr></table></figure>
+<p>在重写的子类中修改<strong>setitem</strong>可以修改Key和value的值以达到dict中修改的目的</p>
+<p><strong>Python中的列表使用情况</strong>：<br>set集合 frozenset(不可变集合)无序，不重复<br>dict查找的性能远大于list<br>list随着数据的增大，时间会增大<br>dict中查找元素不会随着dict的增大而增大<br>哈希表通过计算key的散列值来定位散列表中的一个表元、从而存放进去，可以理解为，key是表元，value是值，我们取值的时候，直接<br>访问key即可获取到value所以复杂度为O(1)，列表要挨个遍历时间复杂度最大为O(n)，所以dict更快。<br>然后判断表元是否为空，是的话抛出key Error异常，否的话判断键是否相等是的话返回列表的值，否的话重新定位</p>
+<p>Python中可哈希的意思为不可变<br>如果一个对象在其生命周期内，其哈希值从未改变(这需要一个<strong>hash</strong>()方法)，<br>并且可以与其他对象进行比较(这需要一个<strong>eq</strong>()或<strong>cmp</strong>()方法)，<br>那么这个对象就是可哈希的。哈希对象的相等意味着其哈希值的相等。</p>
+<p>1、所以可哈希的通常作为dict的key，自己实现的类要实现<strong>hash</strong><br>2、dict的内存花销大，自定义的对象或者Python内部的对象都是用dict包装的<br>3、dict的存储顺序和元素添加顺序油管<br>4、添加数据有可能改变已有数据的顺序，当内存空间不够的时候，进行扩展，所以可能改变顺序</p>
 
     </div>
 
@@ -350,7 +328,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://gaobaiibai.com/2020/03/23/WebScraper/" title="WebScraper">http://gaobaiibai.com/2020/03/23/WebScraper/</a>
+    <a href="http://gaobaiibai.com/2020/05/09/python-seniorbasic2/" title="Python高级编程基础（二）">http://gaobaiibai.com/2020/05/09/python-seniorbasic2/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -362,8 +340,7 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag"><i class="fa fa-google"></i>爬虫</a>
-              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"><i class="fa fa-google"></i>工具</a>
+              <a href="/tags/Python-%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B-%E5%9F%BA%E7%A1%80/" rel="tag"><i class="fa fa-google"></i>Python - 高级编程 - 基础</a>
           </div>
 
         
@@ -372,12 +349,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/02/Pachong_Fanyi/" rel="prev" title="用Python爬虫实现翻译功能">
-      <i class="fa fa-chevron-left"></i> 用Python爬虫实现翻译功能
+    <a href="/2020/05/05/python-seniorbasic1/" rel="prev" title="Python高级编程基础（一）">
+      <i class="fa fa-chevron-left"></i> Python高级编程基础（一）
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/05/05/python-seniorbasic1/" rel="next" title="Python高级编程基础（一）">
-      Python高级编程基础（一） <i class="fa fa-chevron-right"></i>
+    <a href="/2020/05/09/python-seniorbasic3/" rel="next" title="Python高级编程基础（三）">
+      Python高级编程基础（三） <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -443,7 +420,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、安装说明"><span class="nav-number">1.</span> <span class="nav-text">一、安装说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、演示实例"><span class="nav-number">2.</span> <span class="nav-text">二、演示实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、总结"><span class="nav-number">3.</span> <span class="nav-text">三、总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
